@@ -1446,6 +1446,12 @@ particular, you probably do NOT want to use this function when
 setwd(originalDir)
 @
 
+<<>>=
+## Remove the tmp dir. Sys.sleep to prevent Windoze problems.
+Sys.sleep(1)
+unlink("ADaCGH2_vignette_tmp_dir", recursive = TRUE)
+Sys.sleep(1)
+@ 
 
 
 
@@ -2266,36 +2272,36 @@ Sys.sleep(1) ## I hope we do not need this
 %%% Notes for additional text
 
 
-It should be noted that reading very large RData files and trying to
-remove NAs can break R. For instance, with messages such as
+%% It should be noted that reading very large RData files and trying to
+%% remove NAs can break R. For instance, with messages such as
 
-[ramon@Lacerta:]~/ADaCGH2-test-files tail -f read-1000cols-RData-ff.Rout
-The following object(s) are masked from 'package:base':
+%% [ramon@Lacerta:]~/ADaCGH2-test-files tail -f read-1000cols-RData-ff.Rout
+%% The following object(s) are masked from 'package:base':
 
-    %in%
+%%     %in%
 
-Loading required package: parallel
-> 
-> fnameRData <- paste(getwd(), "/Data1000cols.RData", sep = "")
-> 
-> unix.time(tableChromArray <- inputToADaCGH(ff.or.local = "ff",
-+                                                    RDatafilename = fnameRData, na.omit = TRUE))
-Error in cbind(deparse.level, ...) : 
-  resulting vector exceeds vector length limit in 'AnswerType'
-Calls: unix.time ... inputToADaCGH -> is.na -> is.na.data.frame -> do.call -> cbind
-Timing stopped at: 768.444 113.815 892.471 
-Execution halted
-
-
-so you are suggested to clean NAs before hand, or use text files as input.
+%% Loading required package: parallel
+%% > 
+%% > fnameRData <- paste(getwd(), "/Data1000cols.RData", sep = "")
+%% > 
+%% > unix.time(tableChromArray <- inputToADaCGH(ff.or.local = "ff",
+%% +                                                    RDatafilename = fnameRData, na.omit = TRUE))
+%% Error in cbind(deparse.level, ...) : 
+%%   resulting vector exceeds vector length limit in 'AnswerType'
+%% Calls: unix.time ... inputToADaCGH -> is.na -> is.na.data.frame -> do.call -> cbind
+%% Timing stopped at: 768.444 113.815 892.471 
+%% Execution halted
 
 
+%% so you are suggested to clean NAs before hand, or use text files as input.
 
 
-In windows, it crashes with a known problem
-https://www.stat.math.ethz.ch/pipermail/r-devel/2013-April/066493.html
-but see this
-https://stat.ethz.ch/pipermail/r-devel/2013-March/066126.html
+
+
+%% In windows, it crashes with a known problem
+%% https://www.stat.math.ethz.ch/pipermail/r-devel/2013-April/066493.html
+%% but see this
+%% https://stat.ethz.ch/pipermail/r-devel/2013-March/066126.html
 
 
 
