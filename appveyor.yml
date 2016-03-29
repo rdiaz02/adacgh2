@@ -19,6 +19,9 @@ environment:
   TEST_DIR: ADaCGH2
   R_VERSION: devel
   USE_RTOOLS: true
+  R_ARCH: x64
+
+## using x64 as XML fails to build in i386
 
 
 before_build:
@@ -29,6 +32,7 @@ before_build:
    
 
 build_script:
+  - travis-tool.sh install_deps
   - travis-tool.sh install_bioc_deps
 
 test_script:
