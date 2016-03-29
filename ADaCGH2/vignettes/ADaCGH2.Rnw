@@ -631,8 +631,8 @@ major topics:
 to reproduce problems with the automated testing procedure (from creating
 socket clusters to removing temporary directories). Therefore, all
 remaining code in this vignette is surrounded with
-\texttt{if(.Platform\$OS.type != "windows") {some-code-here}}. This code,
-however, should work interactively.
+\texttt{if(.Platform\$OS.type != "windows") \{some-code-here\}}. This
+code, however, should work interactively.
 
 
 
