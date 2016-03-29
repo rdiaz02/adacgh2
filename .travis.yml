@@ -12,7 +12,7 @@ cache: packages
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install libgsl-dev libgsl2 r-cran-rmpi
+  - sudo apt-get install gsl-bin libgsl0-dev libgsl0ldbl r-cran-rmpi
   
 install:
   - Rscript -e 'install.packages(c("devtools","knitr","testthat","roxygen2","Cairo","Rmpi"));source("http://bioconductor.org/biocLite.R");options(repos=biocinstallRepos());biocLite(c("BiocStyle","CGHregions","limma"));devtools::install_deps("ADaCGH2")'
