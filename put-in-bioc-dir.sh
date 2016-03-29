@@ -53,13 +53,14 @@ if [[ $# == 1 ]]; then
     echo " "
     echo " =========   done R CMD check as in check report  =======  "
     echo " "
-    ## time as explained in https://www.bioconductor.org/developers/package-guidelines/#correctness
-    echo " ************************************ "
-    echo " *****   R CMD check: time OK?  ***** "
-    echo ""
-    time $V_R CMD check --no-build-vignettes ADaCGH2_$V_P.tar.gz
-    echo " "
-    echo " ===========  done R CMD check time OK?   ========== "
+    # I skip this since not needed with adacgh2
+    # ## time as explained in https://www.bioconductor.org/developers/package-guidelines/#correctness
+    # echo " ************************************ "
+    # echo " *****   R CMD check: time OK?  ***** "
+    # echo ""
+    # time $V_R CMD check --no-build-vignettes ADaCGH2_$V_P.tar.gz
+    # echo " "
+    # echo " ===========  done R CMD check time OK?   ========== "
 fi
 
 
