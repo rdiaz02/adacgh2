@@ -2,8 +2,7 @@ useDynLib(ADaCGH2, .registration = TRUE)
 ## useDynLib(ADaCGH2, ad_rConvAndPeak, ad_rPulseConv,
 ##           ad_rWConvAndPeak, ad_rThresAndUnify)
 
-export("snowfallInit",
-       "pSegmentDNAcopy",
+export("pSegmentDNAcopy",
        "pSegmentWavelets",
        "pSegmentHMM",
        "pSegmentBioHMM",
@@ -11,11 +10,56 @@ export("snowfallInit",
        "pSegmentCGHseg",
        "pSegmentHaarSeg",
        "pChromPlot",
-       "inputDataToADaCGHData",
-       "outputToCGHregions")
-       ## "tempdir2",
-       ## "convertAndSave")
+       "inputToADaCGH",
+       "outputToCGHregions",
+       "cutFile")
+
+## import(ff, bit, ffbase) works, but gives the warning
+import(ff)
+importFrom("bit", intrle, ri)
+## importFrom("ffbase", min.ff, max.ff)           
+## import(ffbase) ## leads to warning of replacing repvious imports
+## importFrom("ffbase", min, max)           
+importFrom("ffbase", mean.ff) ## importing something from ffbase, so that
+## the min and max methods are available
+
+importFrom("parallel", clusterApplyLB, mclapply, stopCluster)
+importFrom("DNAcopy", getbdry)
+importFrom("tilingArray", segment)
 
 
+importFrom("snapCGH", fit.model)
+importFrom("aCGH", mergeLevels, create.aCGH, find.hmm.states, "hmm<-")
+import(GLAD) ## we actually use now a whole bunch of things
+## importFrom("GLAD", daglad.profileCGH)
+importFrom("waveslim", modwt, imodwt)
+importFrom("cluster", pam, clara)
+
+
+## importFrom("ff",
+##            is.ff,
+##            is.ffdf,
+##            "[[.ff",
+##            "[[<-.ff",
+##            "[.ff",
+##            "[<-.ff",
+##            "[.ff_array",
+##            "[<-.ff_array",
+##vmode,
+##as.vmode,
+##"vmode<-",
+## fforder
+##            get.ff,
+##            open.ff,
+##            close.ff,
+##            delete.ff,
+##            delete.ffdf,
+##            is.open.ff,
+##            is.open.ffdf,
+##            close.ffdf,
+##            open.ffdf,
+##            as.ffdf.ff_matrix,
+##            as.ffdf,
+##            as.ffdf.ff_vector)
 
 

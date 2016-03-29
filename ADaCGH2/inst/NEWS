@@ -1,19 +1,215 @@
-2.1.3	2010-10-06
-	- Rmpi in "Enhances", not "Suggests", to allow for R CMD check in
-	Mac and Windows. 
+Changes in version 2.9.3 (2015-05-30)
+	- Fixed Note about require(Cairo).
+	- Fixed failure with changes in ffbase and not exporting min.ff
+	and max.ff
 
-2.1.2	2010-10-04
-	- rsprng no longer in depends; L'Ecuyer as default random number
-	generator.
-	- Using R's registration mechanism for C routines.
-	- Decreased size of example to speed up R CMD check.
-	- SOCK is default cluster, and Rmpi not loaded by us.
+Changes in version 2.9.2 (2015-05-07)
+	- Remove wrong {} in CITATION.
 
-2.1.1	2010-09-30
-	- Output to CGHregions and input from limma and
-	  snapCGH. Changes in functions, help, vignnette.
-	- Can also use rlecuyer.
-	- Works with R-2.11 (adapted to differences in "inherits").
+Changes in version 2.9.1 (2015-04-30)
+	- Added the CITATION file (which was never uploaded to the svn repos)
+	- Added in one reference in pSegement.Rd
 
-2.1.0	2010-09-23
-	- First fully working version for BioC
+Changes in version 2.5.2 (2014-10-03)
+	- Corrected help for "inputToADaCGH"
+
+Changes in version 2.5.1 (2014-10-03)
+	- Fixed bug reading files when R object was called "inputData"
+
+Changes in version 2.5.0
+	- Bumped BioC version.
+
+Changes in version 2.4.0
+	- Bumped BioC version.
+
+Changes in version 2.3.10 (2013-12-27)
+	- Minor changes to main vignette with a new section "Why ADaCGH2
+	instead of a manual solution".
+	
+Changes in version 2.3.10 (2013-12-27)
+        - Change in NAMESPACE to adapt to changes in ffbase or bit (we
+	  were getting warnings of "replacing previous import by
+	  ffbase::[.ff when loading ADaCGH2"")
+
+Changes in version 2.3.9 (2013-11-28)
+	- Minor changes to "benchmarks.pdf": consistent usage of lty and
+	  pch for figures of reading and analysis.
+
+Changes in version 2.3.8 (2013-11-26)
+	- Minor changes to "benchmarks.pdf".
+
+Changes in version 2.3.7 (2013-11-26)
+	- Minor changes to "benchmarks.pdf".
+
+Changes in version 2.3.6 (2013-11-24)
+	- Help for inputToADaCGH has a more verbose section on the need to
+	  use the right mc.cores.
+	- Made default for mc.cores to inputToADaCGH be half the number of
+	  cores. 
+	- More changes to benchmarks.pdf, including the link to all the data.
+
+
+Changes in version 2.3.5 (2013-11-11)
+       - Changes in vignette: unified all benchmarking in benchmark.pdf.
+       - Clarified help for pSegment on loadBalance and say explicitly not
+         the default for HaarSeg.
+       - Note versions 2.3.3 and 2.3.4 were never placed in BioC repos.
+
+
+Changes in version 2.3.4 (2013-11-09)
+       - Reorganized file location for additional files (benchmarks,
+         long-vignette).
+       - Addedd loadBalance as an argument to the pSegment and pChromPlot
+         functions, so that the user can choose to use load balancing-like
+         with both forking and MPI. See additional benchmarking vignette
+         for tables with results. Added code to the long vignette to
+	 exercise this.
+
+Changes in version 2.3.3 (2013-11)
+	- Playing with clusterApplyLB.
+
+Changes in version 2.3.2 (2013-10-22)
+       - Import aCGH and snapCGH again. Corresponding changes in Author,
+         init.c, R code, and C code: basically, all the code taken from
+	 those packages is not here.
+
+Changes in version 2.3.1 (2013-10-20)
+       - Added aCGH and snapCGH code: new R and C files, with minor
+         modifications and updates (registration of routines, no partial
+	 matching of arguments, etc)
+       - NAMESPACE and Description reflect no longer dependency on snapCGH
+         or aCGH.
+       - This version works, passes tests, is checked to give the same
+         results as previous ones, etc. But never made it into BioC repos,
+	 as on 2013-10-23 I realized aCGH and snapCGH were again in BioC
+	 devel. 
+
+Changes in version 2.3.0 (2013-10-20)
+       - Version bump for new BioC devel.
+
+Changes in version 2.1.7 (2013-10-09)
+       - Added mc.cores option to inputToADaCGH
+       - changed "cores" to "mc.cores" in cutFile, for consistency. 
+
+
+Changes in version 2.1.6 (2013-09-23)
+       - Started testing against R beta 3.0.2. Fixed Imports and Depends.
+       - chromData: using "short", not "ushort", to catch more user errors.
+       - pSegmentGLAD: using a custom daglad that minimizes unneeded
+         calls, specially sorting, that can be very expensive.
+       - Added "certain_noNA" as an option of segmentation methods.
+       - Started testing against R-devel (to become R-3.1.0).
+
+
+Changes in version 2.1.5 (2013-09-16)
+       - Fixed typos.
+       - Minimized usage of ":::", removed unused functions for Ansari,
+       and some assignemts that no longer made sense (all packages now
+       have namespaces).
+       - Minimize "Depends" and use "Suggests" and "Imports" in
+       DESCRIPTION with "importFrom" in NAMESPACE.
+       - No longer using our own mergeLevels, since identical to the ones
+       in aCGH package.
+       - GLAD uses now the recommended fastest option (smoothfunc=haarseg).
+
+
+Changes in version 2.1.4 (2013-07-01)
+       - Fixed missing entry in bib of vignette.
+
+Changes in version 2.1.3 (2013-06-20)
+       - Default merging of pSegmentDNAcopy changed to "MAD", to reflect
+       our usage.
+       - Added more benchmarking results and recommendations to the
+       vignette, and fixed some typos.
+
+Changes in version 2.1.2 (2013-06-17)
+       - More changes in cutFile to try and get it to run under Mac.
+       - Fixed names in long examples that were leading to mistakenly
+       reporting results as different.
+       - Added new benchmarking results.
+
+Changes in version 2.1.1 (2013-06-16)
+       - Many small changes and adaptations in vignette and help to get it
+       to work unded Win and Mac.
+       - Changes in cutFile to try and get it to run under Mac.
+
+Changes in version 2.1.0 (2013-05-30)
+       - This is a major rewrite of a most of the code, has new
+       functions, major changes in existing functions, new vignettes, etc.
+       - We no longer use snowfall.
+       - Major changes in parallelization, using forking.
+       - Reading of data: many more options, parallelized reading.
+
+Changes in version 1.3.3  (2011-10-19)
+       - Added more "Sys.sleep" to see if we can get it not to crash in
+       Windoze. 
+
+Changes in version 1.3.2  (2011-10-18)
+       - Added unloading of rlecuyer, to prevent problems with cleanEx
+       during R CMD check.
+
+Changes in version 1.2.1  (2011-06-06)
+       - Changed "if" in stop.na.inf, as per Dundan Murdoch's suggestion.
+
+Changes in version 1.2.0  (2011-04-14)
+       - Version in BioC 2.8
+
+Changes in version 1.1.1  (2011-03-27)
+       - Trying to pass check in Windows 64-bit: all examples now
+       execute within their temp dirs, which get deleted. And more
+       Sys.sleep.
+       - Further work in code to remove some unneeded temporary
+       ff objects inside functions.
+
+Changes in version 1.1.0  (2010-10-28)
+       - Clean up changes inside functions, deleting tmp. objects.
+       (all in BioC devel version)
+
+
+Changes in version 1.0.0  (2010-10-16)
+       - First version in BioC release (2.7).
+
+
+Changes in version 0.99.3 (2010-10-16)
+	- Clean up in examples.
+
+Changes in version 0.99.2 (2010-10-15)
+	- Added clean ups to vignette to build OK under Windows (stoping
+	cluster and deleting ff objects and tmp directory).
+
+Changes in version 0.99.1 (2010-10-13)
+	- multicore moved to "Enhances" to allow easier R CMD check in
+	Windows. 
+
+Changes in version 0.99.0 (2010-10-06)
+	- First version in BioC; same as 2.1.3 as per old numbering system.
+
+	- These are entries for former numbering system:
+	        2.1.3	2010-10-06
+		- Rmpi in "Enhances", not "Suggests", to allow for R CMD
+		check in Mac and Windows.
+
+	    	 2.1.2	2010-10-04
+		- rsprng no longer in depends; L'Ecuyer as default random
+		number generator.
+		- Using R's registration mechanism for C routines.
+		- Decreased size of example to speed up R CMD check.
+		- SOCK is default cluster, and Rmpi not loaded by us.
+
+		2.1.1	2010-09-30
+		- Output to CGHregions and input from limma and
+		snapCGH. Changes in functions, help, vignnette.
+		- Can also use rlecuyer.
+		- Works with R-2.11 (adapted to differences in "inherits").
+
+		2.1.0	2010-09-23
+		- First fully working version for BioC. Versioning changed!
+       
+
+	
+
+
+
+
+
+
