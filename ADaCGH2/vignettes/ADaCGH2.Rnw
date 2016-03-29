@@ -2181,7 +2181,8 @@ output for other packages ---e.g., section \ref{cghregions}).
 
 <<echo=FALSE>>=
 ## try(closeAllConnections()) ## nope, breaks things
-Sys.sleep(1) ## I hope we do not need this
+## Remove this sys.sleep; is this sometimes breaking windoze build in BioC?
+## Sys.sleep(1) ## I hope we do not need this
 @ 
 
 \end{document}
