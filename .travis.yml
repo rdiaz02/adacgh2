@@ -20,7 +20,7 @@ install:
 before_script:
    - R CMD build --keep-empty-dirs ADaCGH2
 script:
-   - R CMD check ADaCGH2_*.tar.gz
+   - R CMD check --no-vignettes --timings ADaCGH2_*.tar.gz
 
 
 
