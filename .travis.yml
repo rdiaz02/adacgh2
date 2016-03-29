@@ -1,0 +1,33 @@
+# Sample .travis.yml for R projects +
+# https://github.com/travis-ci/travis-ci/issues/5775
+
+language: r
+r: bioc-devel
+
+warnings_are_errors: true
+
+sudo: required
+
+cache: packages
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install libgsl-dev libgsl2 r-cran-rmpi
+  
+install:
+  - Rscript -e 'install.packages(c("devtools","knitr","testthat","roxygen2","Cairo","Rmpi"));source("http://bioconductor.org/biocLite.R");options(repos=biocinstallRepos());biocLite(c("BiocStyle","CGHregions","limma"));devtools::install_deps("ADaCGH2")'
+ 
+before_script:
+   - R CMD build --keep-empty-dirs ADaCGH2
+script:
+   - R CMD check ADaCGH2_*.tar.gz
+
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+
+
