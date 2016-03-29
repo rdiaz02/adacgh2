@@ -22,7 +22,15 @@ before_script:
 script:
    - R CMD check --no-vignettes --timings ADaCGH2_*.tar.gz
 
+## I use "no-vignettes", which is the way it is used in BioC, and we built
+## the vignette right on top, so this is OK. Moreover, unless we use
+## "--no-vignettes" it will fail in travis, as the procedure used in
+## Travis confuses ADaCGH2 because of the relative location of files.
 
+
+## An alternative would be to change directories as in
+## https://github.com/travis-ci/travis-ci/issues/5775
+## I haven't tried it.
 
 notifications:
   email:

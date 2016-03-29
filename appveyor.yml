@@ -36,8 +36,10 @@ build_script:
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_bioc tilingArray
   - travis-tool.sh install_bioc GLAD  
-  - travis-tool.sh install_bioc snapCGH	
+  - travis-tool.sh install_bioc snapCGH
   
+## trying to get it to work in spite of some package install failures
+## but with R-3.3 te BioCInstaller is not available. Nothing to do.
 
 test_script:
   - travis-tool.sh run_tests
