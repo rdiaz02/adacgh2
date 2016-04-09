@@ -16,7 +16,8 @@ install:
 ## http://stackoverflow.com/questions/33411765/check-multiple-subdirectories-using-appveyor
 
 environment:
-  TEST_DIR: ADaCGH2
+  global:
+    TEST_DIR: ADaCGH2
     R_VERSION: patched
     USE_RTOOLS: true
     R_BUILD_ARGS: --keep-empty-dirs --no-resave-data --no-manual
