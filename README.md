@@ -1,5 +1,5 @@
 [![Travis-CI Build Status](https://travis-ci.org/rdiaz02/adacgh2.svg?branch=master)](https://travis-ci.org/rdiaz02/adacgh2)
-<!-- [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rdiaz02/adacgh2?branch=master&svg=true)](https://ci.appveyor.com/project/rdiaz02/adacgh2) -->
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rdiaz02/adacgh2?branch=master&svg=true)](https://ci.appveyor.com/project/rdiaz02/adacgh2)
 
 ADaCGH2
 =======

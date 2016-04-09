@@ -17,9 +17,30 @@ install:
 
 environment:
   TEST_DIR: ADaCGH2
-  R_VERSION: devel
-  USE_RTOOLS: true
-  R_ARCH: x64
+    R_VERSION: patched
+    USE_RTOOLS: true
+    R_BUILD_ARGS: --keep-empty-dirs --no-resave-data --no-manual
+    R_CHECK_ARGS: --timings --no-vignettes --no-manual 
+## --no-manual and forward because they are needed for appveyor
+## --install-args=--build --no-multiarch
+    
+  matrix:
+    - R_ARCH: x64
+      GCC_PATH: mingw_64
+      RTOOLS_VERSION: 33
+
+    - R_ARCH: i386
+      GCC_PATH: mingw_32
+      RTOOLS_VERSION: 33
+      
+    - RTOOLS_VERSION: 32
+      R_ARCH: i386
+      
+    - RTOOLS_VERSION: 32
+      R_ARCH: x64
+    
+## As soon as R-3.3 is new stable, and all migrated to Rtools 3.3
+## we will remove the last two entries
 
 ## using x64 as XML fails to build in i386
 
