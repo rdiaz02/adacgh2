@@ -54,11 +54,12 @@ before_build:
    
 
 build_script:
-  - travis-tool.sh install_deps
   - travis-tool.sh install_bioc_deps
-  - travis-tool.sh install_bioc tilingArray
-  - travis-tool.sh install_bioc GLAD  
-  - travis-tool.sh install_bioc snapCGH
+  
+##  - travis-tool.sh install_deps
+##  - travis-tool.sh install_bioc tilingArray
+##  - travis-tool.sh install_bioc GLAD  
+##  - travis-tool.sh install_bioc snapCGH
   
 ## trying to get it to work in spite of some package install failures
 ## but with R-3.3 te BioCInstaller is not available. Nothing to do.
@@ -69,6 +70,10 @@ test_script:
 on_failure:
   - 7z a failure.zip *.Rcheck\*
   - appveyor PushArtifact failure.zip
+
+on_success:
+  - 7z a success.zip *.Rcheck\*
+  - appveyor PushArtifact success.zip
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
