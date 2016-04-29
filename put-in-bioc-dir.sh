@@ -41,7 +41,7 @@ if [[ $# == 1 ]]; then
     echo " ***************************************** "
     echo " *********     R CMD build  ************** "
     echo " "
-    time $V_R CMD build --keep-empty-dirs --no-resave-data ADaCGH2
+    time $V_R --vanilla CMD build --keep-empty-dirs --no-resave-data ADaCGH2
     echo " "
     echo " ===========  done R CMD build   ========== "
     echo " "
@@ -49,7 +49,7 @@ if [[ $# == 1 ]]; then
     echo " ***************************************** "
     echo " **** R CMD check, as in check report **** "
     echo ""
-    time $V_R CMD check --no-vignettes --timings ADaCGH2_$V_P.tar.gz
+    time $V_R --vanilla CMD check --no-vignettes --timings ADaCGH2_$V_P.tar.gz
     echo " "
     echo " =========   done R CMD check as in check report  =======  "
     echo " "
