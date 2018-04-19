@@ -43,7 +43,8 @@ inputToADaCGH(ff.or.RAM = "RAM",
 
   \item{MAList}{The name of an object of class \code{MAList}
     %% (\code{\link[limma]{as.MAList}})
-    (\code{\link[limma]{MAList-class}})
+    %% (\code{\link[limma]{MAList-class}})
+    (\code{\link{MAList-class}})
     or \code{SegList} (e.g.,
     \code{\link{dim.SegList}}). See vignnettes for these
     packages for details about these objects.
