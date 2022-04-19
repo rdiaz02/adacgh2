@@ -18,7 +18,9 @@ All code is copyright their respective authors. Authors: Ramon
 Diaz-Uriarte and Oscar M. Rueda for the main ADaCGH2 code. Wavelet-based
 aCGH smoothing code from Li Hsu and Douglas Grove. Imagemap code from
 Barry Rowlingson. HaarSeg code from Erez Ben-Yaacov; downloaded from
-<http://www.ee.technion.ac.il/people/YoninaEldar/Info/software/HaarSeg.htm>.
+<http://www.ee.technion.ac.il/people/YoninaEldar/Info/software/HaarSeg.htm>. Code from ffbase <https://github.com/edwindj/ffbase> by Edwin de Jonge <edwindjonge@gmail.com>, Jan Wijffels, Jan van der Laan.
+
+See details in file ADaCGH2/README.code.authors.
 
 
 Paper
