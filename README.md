@@ -20,7 +20,7 @@ aCGH smoothing code from Li Hsu and Douglas Grove. Imagemap code from
 Barry Rowlingson. HaarSeg code from Erez Ben-Yaacov; downloaded from
 <http://www.ee.technion.ac.il/people/YoninaEldar/Info/software/HaarSeg.htm>. Code from ffbase <https://github.com/edwindj/ffbase> by Edwin de Jonge <edwindjonge@gmail.com>, Jan Wijffels, Jan van der Laan.
 
-See details in file ADaCGH2/README.code.authors.
+See details in file ADaCGH2/README.code.authors (https://github.com/rdiaz02/adacgh2/blob/master/ADaCGH2/README.code.authors).
 
 
 Paper
