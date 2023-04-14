@@ -1,3 +1,6 @@
+NO LONGER USED. This was for subversion!
+
+
 #!/bin/bash
 
 ## needs clean up because I am copying things that are not needed
