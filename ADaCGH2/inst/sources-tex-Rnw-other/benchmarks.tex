@@ -8,20 +8,16 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 
-%% automatically numbering rows of tables not coming from R
 \usepackage{etoolbox}
 \preto\tabular{\setcounter{magicrownumbers}{0}}
 \newcounter{magicrownumbers}
 \newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
 
-%% \usepackage[pdftex]{lscape}
 \usepackage{pdflscape}
 \geometry{verbose,a4paper,tmargin=26mm,bmargin=26mm,lmargin=28mm,rmargin=28mm}
 
 \usepackage[singlelinecheck=off]{caption}
 
-%\usepackage{tikz}
-%\usetikzlibrary{arrows,shapes,positioning}
 
 \usepackage[latin1]{inputenc}
 \usepackage{datetime}
@@ -29,19 +25,11 @@
 
 \title{Benchmarking ADaCGH2 and comparison with previous versions}
 \date{\mydate\today}
-%\date{\the\day-\the\month-\the\year}
 \author{Ramon Diaz-Uriarte$^{1}$}
 
 
-%% Remember to add BiocStyle to Suggests
-%%
-%% I get lots of problems, so will try later.
-%% <<style, eval=TRUE, echo=FALSE, results=tex>>=
-%% BiocStyle::latex()
-%% @
 
 
-%\pagestyle{headings} 
 
 
 \begin{document}
@@ -147,16 +135,8 @@ three columns of ID, chromosome, and location) has a size of 45.2 GB
 factor with the identifiers, is minute relative to the size of the
 matrix).  
 
-%% each column is about 0.045 GB, so a 1003 cols obj would have been
-%% 45.2 + 0.135 = 45.33. Thus, the factor takes an extra 300 MB.
 
 
-%% the data frame, without the first three columns, is 45.2 GB.
-% \footnote{A submatrix of those same data with 100
-%   columns of data, i.e., a numeric matrix of, say, columns 101 to 200,
-%   occupies 4.52 GB. Thus, a matrix with 1003 columns of that type of data
-%   would occupy about 45.34 GB (4.52 * 1003/100 = 45.34); the difference of
-%   300 MB is minute relative to the size of the matrix.}.
 
 
 
@@ -165,19 +145,11 @@ matrix).
  %% Ncells    6272458   335.0    9532693   509.2    6273371   335.1
  %% Vcells 6102207940 46556.2 6634368466 50616.3 6102370100 46557.4 
 
-%% 100 data columns (columns 101 to 200) occupy, as data.frame 
-%% 4853957368 bytes, so about 4.52 GB.
-%% As a matrix, 4853952408 bytes, so another 4.52 GB.
 
 
 
-% Sizes of objects:
-% - RData-to-local-uncompressed.RData: 46GB
-% - RData-to-local-compressed.RData: 41GB
 
 
-% - ff better: a single vector limited by int.machine, etc, but not the
-% whole array.
 
 
 
@@ -204,8 +176,6 @@ nodes will indicate ``124 cores'' \footnote{124 is not a typo; it is 124,
 We will also show some examples run on an HP Z800 workstation, with 2
 Intel Xeon E5645 processors (each processor has six cores), and 64 GB of
 RAM. The data live on an ext4 partition on a SATA disk (7200 rmp). % In the
-% tables, this is indicated as ``Coleonyx, 12 cores'' (table with results
-% for reading data) or by the number 12 in the column for number of cores.
 
 
 In both systems, the operating system is Debian GNU/Linux (a mixture of
@@ -356,7 +326,6 @@ For the tables below, the meaning of columns is as follows:
       DNAcopy, as available from BioConductor, and the HaarSeg package,
       available from R-forge:
       \url{https://r-forge.r-project.org/projects/haarseg/}}.
-%      \cite{haar-package}}.
 
     The entries marked as ``-LB'' correspond to the load-balanced options
     with the new version of ADaCGH2 (setting \texttt{loadBalance = TRUE},
@@ -487,13 +456,6 @@ point of view.
   missing values.
 
 
-% \item[Flexibility of analysis options] The new version gives the
-%   user more options for analysis, which can help adapt analysis to
-%   available hardware, therefore resulting in faster speed and/or decreased
-%   memory consumption. In particular, the user can choose to use MPI or
-%   forking (option \texttt{typeParall} in the segmentation and plotting
-%   functions) and to use, or not, load balancing (options
-%   \texttt{loadBalance} to segmentation and plotting functions).
 
 \item[Dependencies] The old version depends on package \texttt{snowfall}
   for parallelization, whereas the new version depends only on
@@ -536,7 +498,6 @@ point of view.
 
 
 
-% Uncomment when ready
 \subsection{Data and code availability}
 
 All scripts, data, and results from these benchmarks are available from
@@ -587,11 +548,8 @@ of the machines. Moreover, the \textbf{scaling} (see also figure
 to much larger numbers and, in addition, that the total memory used can be
 limited by reducing the number of cores used (with little effects on speed
 ---see next point).% : for instance, compare row 32 with 33, and row 34
-% with 35 in table \ref{read-coleonyx}; rows 41 to 44 in table
-% \ref{read-gallotia}; and rows 30, 31, 32, 33 in table \ref{read-lacerta}.
 
 
-%% verify which one is faster in Xeon, after tuning num cores.
 \item[Speed of new and old version] Reading is much faster with the new
   version. These differences are most likely inconsequential for small
   sized data sets (where differences are by a factor of about 2x), but can
@@ -617,8 +575,6 @@ limited by reducing the number of cores used (with little effects on speed
   default option.
 
 
-% Look at rows 32 to 35 in table. There are soooooo many examples, that no
-% row numbers are provided anymore.
   % \ref{read-coleonyx}; rows 41 to 44 in table \ref{read-gallotia}; and
   % rows 30 to 33 in table \ref{read-lacerta}.
   % In particular, the number of spindles and the speed of the drives is
@@ -653,11 +609,9 @@ comparison]{\label{fig-read} Comparison between old and new versions in
   tables). When more than one benchmark is available for a scenario, the
   median is shown.}
 
-%%zz the sum of memory consumption over all processes
 \end{figure}
 
 \begin{center}
-%\clearpage
 \input{read-coleonyx.tex}
 \clearpage
 \input{read-gallotia.tex}
@@ -746,7 +700,6 @@ comparison]{\label{fig-anal} Comparison between old and new version in
 
 \begin{landscape}
 \begin{center}
-%\clearpage
 \input{anal-coleonyx.tex}
 \clearpage
 \input{anal-gallotia.tex}
@@ -795,7 +748,6 @@ repeated calls to the function.
 \rownumber&Haar & Fork &50  & ff & 1000 & 6.7 & 0.139 & 21.2 \\
 \rownumber&Haar & Fork & 64  & ff & 1000 & 6.4 & 0.142 & 26.9 \\
 
-% &&&&&&&\\
 
 \rownumber&Haar & Fork &10  & ff & 2000 &49.7 & 0.16 & 8.0 \\
 \rownumber&Haar & Fork &20  & ff & 2000 & 26.3 & 0.16 & 11.9 \\
@@ -812,7 +764,6 @@ repeated calls to the function.
 \rownumber&CBS & Fork &50  & ff & 1000 & 438.6 & 0.142 & 33.1 \\
 \rownumber&CBS & Fork & 64  & ff & 1000 & 350.3 & 0.142 & 41.3 \\
 
-% &&&&&&&\\
 \rownumber&CBS & Fork &10  & ff & 2000 &3770.9 & 0.15 & 11.1 \\
 \rownumber&CBS & Fork &20 & ff & 2000 & 1878.8 & 0.16 & 16.5 \\
 \rownumber&CBS & Fork &40  & ff & 2000 & 1007.0 & 0.15 & 28.8 \\
@@ -824,7 +775,6 @@ repeated calls to the function.
 
 \rownumber&Haar & NP &-  &RAM  & 100 &  25.2\tnote{a}   & 12.5 & 12.5  \\
 \rownumber&CBS     & NP &-  &RAM  & 100 & 1706\tnote{b}  &   40   &  40\\
-%%\rownumber&Haar & NP &-  &RAM  & 1000 & 198.3\tnote{c} & \multicolumn{2}{c}{\textit{\textbf{Cannot allocate memory}}} \\
 \rownumber&Haar & NP &-  &RAM  & 1000 &
 \multicolumn{3}{c}{198.3\tnote{c}\quad \textit{\textbf{Cannot allocate memory}}} \\
 \rownumber&CBS     & NP &-  &RAM  & 1000 &
@@ -879,12 +829,7 @@ repeated calls to the function.
 \end{center}
 
 
-%% in coleonyx, with 100 Haar: time 13.55, memory: 14.09. But time is
-%% really: 39 seconds for load + 813 secs for anal + 53.5 secs for
-%% saving. 
 
-%% CBS, 100. load: 38.7 segs, make: 57.3 segs, smooth: 1214.1 segs,
-%% segment: 65090.6. save: 294.2; gc: 39177.9 + 21.8
 
 \clearpage
 \subsection{Reading from a directory of files vs.\ other options}
@@ -924,7 +869,6 @@ used for analysis (see section \ref{ramobj}).
 \rownumber&Directory to data frame (RAM object) & 100 & 8.7 + 0.3\tnote{d} & 10.5 & 30 \\
 \rownumber&Directory to data frame (RAM object) & 50 & 5.8 + 0.1\tnote{e} & 5.8 & 27 \\
 
-%% I take several measyures in a few cases, and show the representative one
 
 
 \hline
@@ -944,19 +888,12 @@ used for analysis (see section \ref{ramobj}).
 \end{threeparttable}
 \end{center}
 
-% ``5.8 + 0.1'' or ``22 + 2'': add time to save  the RData object. When
-% creating \textit{ff} objects, saving is part of the main reading function.
-
-
-% Max.\ mem. (\texttt{gc}) is the sum of the ``max used'' column reported by
-% \texttt{gc}, in R.
 
 
 
-% Notice: ff adjusts usage, thus the figure for COleonyx.
 
-% Last column: could be a slight underestimate if a peak of
-% consumpt. between two samples.
+
+
 
 \clearpage
 \subsection{Analyzing large data with RAM objects}
@@ -971,7 +908,6 @@ shown than for similarly sized problems when using \textit{ff} objects
 
 
 \renewcommand{\arraystretch}{1.4}
-%\thispagestyle{empty}
 
 \begin{center}
   
@@ -1024,29 +960,10 @@ shown than for similarly sized problems when using \textit{ff} objects
 \end{center}
 
 
-%% time and memory, haar seg, with increasing num. cols in 64 cores
-%% h2 <- rbind(c(50, 0.5, 20.6), 
-%%             c(200, 2.3, 28.6), 
-%%             c(500, 4.6, 26), 
-%%             c(1000, 7.9, 27), 
-%%             c(2000, 18.7, 28.4))
 
-%% plot(h2[, 2] ~ h2[, 1])
-%% plot(h2[, 3] ~ h2[, 1])
 
-%% time and memory, cbs and haar, with 2000 arrays, as cores change
-%% t.c <- c(717, 857, 1007, 1879, 3771)
-%% m.c <- c(42, 35.3, 29, 16.5, 11.1)
-%% x <- c(64, 50, 40, 20, 10)
-%% plot(t.c ~ x)
-%% plot(m.c ~ x)
-%% t.h <- c(12, 13, 15.4, 26.3, 49.7)
-%% m.h <- c(28, 23, 19.5, 11.9, 8)
-%% plot(m.h ~ x)
-%% plot(t.h ~ x)
             
 
-%\clearpage
 
 
 
@@ -1123,10 +1040,6 @@ shown than for similarly sized problems when using \textit{ff} objects
   different RAM can lead to different amounts of memory usage, as
   \textit{ff} tries autotuning when starting. 
 
-%% Note, for instance, the differences in RAM usage between our two
-%% machines when reading a
-%% directory with a 1000 column data set. Hey! This is just because we
-%% use 12 or 64 cores!
   You can tune parameters when you load the \textbf{ff} package, but even
   if you don't (and, by default, we don't), defaults are often sensible
   and will play in your favor.
@@ -1183,12 +1096,6 @@ shown than for similarly sized problems when using \textit{ff} objects
 
 
 \end{document}
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% ispell-local-dictionary: "en_US"
-%%% coding: iso-8859-15
-%%% End:
 
 
 
