@@ -23,4 +23,6 @@ time R_ENVIRON_USER="~/.R/Renviron.bioc" $V_R --vanilla CMD build --keep-empty-d
 
 time R_ENVIRON_USER="~/.R/Renviron.bioc" $V_R --vanilla CMD check --no-vignettes --timings ADaCGH2_$V_ADA.tar.gz
 
+time R_ENVIRON_USER="~/.R/Renviron.bioc" $V_R --vanilla CMD check --as-cran --no-vignettes --timings ADaCGH2_$V_ADA.tar.gz
+
 ## the --no-rebuild-vignettes is no longer valid
